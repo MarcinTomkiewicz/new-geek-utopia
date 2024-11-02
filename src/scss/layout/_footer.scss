@@ -1,0 +1,22 @@
+@import 'variables';
+
+footer {
+    background-color: $primary-color;
+    color: $text-light;
+    text-align: center;
+    padding: $padding-medium;
+    font-size: $font-size-small;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    a {
+      color: $text-light;
+      text-decoration: none;
+      margin: 0 $padding-small;
+  
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }

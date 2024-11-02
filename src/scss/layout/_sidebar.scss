@@ -1,0 +1,28 @@
+@import 'variables';
+
+.sidebar {
+    width: 25%;
+    background-color: $secondary-color;
+    padding: $padding-medium;
+    border-radius: $border-radius;
+    margin-right: $padding-medium;
+    font-size: $font-size-base;
+  
+    .category-list {
+      list-style: none;
+      padding: 0;
+  
+      li {
+        margin-bottom: $padding-small;
+  
+        a {
+          color: $text-color;
+          text-decoration: none;
+  
+          &:hover {
+            color: $accent-color;
+          }
+        }
+      }
+    }
+  }

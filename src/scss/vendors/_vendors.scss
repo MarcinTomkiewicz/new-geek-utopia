@@ -1,0 +1,8 @@
+// vendors styles
+@import 'variables';
+
+// Teraz możesz ustawiać kolory używane przez komponenty PrimeNG
+:root {
+  --primary-color: #{$primary-color};
+  --secondary-color: #{$secondary-color};
+}
