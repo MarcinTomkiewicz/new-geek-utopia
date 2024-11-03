@@ -1,8 +1,39 @@
 // vendors styles
 @import 'variables';
+@import 'mixins/default_flex';
 
 // Teraz możesz ustawiać kolory używane przez komponenty PrimeNG
 :root {
   --primary-color: #{$primary-color};
   --secondary-color: #{$secondary-color};
+}
+
+.p-card {
+  background-color: $secondary-color !important; // Ustaw tło karty
+  color: $text-color !important; // Ustaw kolor tekstu
+}
+
+.p-card-body {
+  padding: 0.75rem;
+}
+
+.p-inputwrapper {
+  width: 100%;
+}
+
+.p-inputtext {
+  width: 100%;
+}
+
+.p-field {
+  @include flex-wrapper(column);
+  align-items: baseline;
+  width: 100%;
+  gap: 10px;
+}
+
+// Dla buttonów
+.p-button {
+  background-color: $accent-color !important; // Ustaw kolor tła przycisku
+  border: none; // Upewnij się, że nie ma obramowania
 }

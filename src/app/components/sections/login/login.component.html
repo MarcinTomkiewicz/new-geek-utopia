@@ -1,0 +1,100 @@
+<p-card
+  [header]="showRegister ? 'Rejestracja' : 'Logowanie'"
+  class="sidebar-card"
+>
+  <form
+    [formGroup]="showRegister ? registerForm : loginForm"
+    (ngSubmit)="showRegister ? register() : login()"
+    class="form-settings"
+  >
+    <ng-container *ngIf="!showRegister; else registerTemplate">
+      <div class="p-field">
+        <label for="username">Login:</label>
+        <input id="username" pInputText formControlName="username" />
+        <div
+          *ngIf="
+            loginForm.get('username')?.invalid &&
+            loginForm.get('username')?.touched
+          "
+          class="p-error"
+        >
+          Login jest wymagany.
+        </div>
+      </div>
+
+      <div class="p-field">
+        <label for="password">Hasło:</label>
+        <p-password
+          id="password"
+          formControlName="password"
+          toggleMask="true"
+          strongLabel="Silne"
+          weakLabel="Słabe"
+          mediumLabel="Średnie"
+          promptLabel="Wprowadź hasło"
+        ></p-password>
+        <div
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+          class="p-error"
+        >
+          Hasło jest wymagane.
+        </div>
+      </div>
+
+      <p-button label="Zaloguj" type="submit"></p-button>
+
+      <p
+        class="register-link"
+        (click)="toggleRegister()"
+        style="cursor: pointer"
+        onkeydown
+      >
+        Nie masz jeszcze konta? Zarejestruj się
+      </p>
+    </ng-container>
+
+    <ng-template #registerTemplate>
+      <div class="p-field">
+        <label for="name">Imię:</label>
+        <input id="name" pInputText formControlName="name" />
+      </div>
+
+      <div class="p-field">
+        <label for="email">Email:</label>
+        <input id="email" pInputText formControlName="email" />
+      </div>
+
+      <div class="p-field">
+        <label for="reg-username">Login:</label>
+        <input id="reg-username" pInputText formControlName="reg-username" />
+      </div>
+
+      <div class="p-field">
+        <label for="reg-password">Hasło:</label>
+        <p-password
+          id="reg-password"
+          formControlName="regPassword"
+          toggleMask="true"
+          strongLabel="Silne"
+          weakLabel="Słabe"
+          mediumLabel="Średnie"
+          promptLabel="Wprowadź hasło"
+        ></p-password>
+      </div>
+
+      <p-button label="Rejestracja" type="submit"></p-button>
+      
+      <p
+        class="login-link"
+        (click)="toggleRegister()"
+        style="cursor: pointer"
+        onkeydown
+      >
+        Masz już konto? Zaloguj się
+      </p>
+    </ng-template>
+  </form>
+</p-card>

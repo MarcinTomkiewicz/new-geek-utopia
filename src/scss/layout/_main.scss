@@ -3,18 +3,14 @@
 .main-layout {
   display: flex;
   flex: 1;
-
-  .sidebar {
-    width: $sidebar-width;
-    background-color: $secondary-color;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
-
+  justify-content: space-between;
+  gap: $base-gap;
+  
   .content {
+    border-radius: $border-radius;
     flex: 1;
     padding: 20px;
-    background-color: white;
+    background-color: $secondary-color;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   }
 }

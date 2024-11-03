@@ -7,18 +7,18 @@
   
   <main class="main-layout">
   
-    <aside class="sidebar">
-      <app-sidebar></app-sidebar>
+    <aside class="sidebar" aria-label="Left side panel">
+      <app-sidebar side="left"></app-sidebar>
     </aside>
 
   
     <section class="content">
-  
+      <p-toast></p-toast>
       <router-outlet></router-outlet>
     </section>
 
-    <aside class="sidebar">
-      <app-right-panel></app-right-panel>
+    <aside class="sidebar" aria-label="Right side panel">
+      <app-sidebar side="right"></app-sidebar>
     </aside>
   </main>
 

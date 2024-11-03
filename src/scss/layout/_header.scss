@@ -6,6 +6,7 @@ header {
     padding: $padding-medium;
     display: flex;
     align-items: center;
+    border-radius: $border-radius;
   
     .logo {
       font-size: $font-size-large;

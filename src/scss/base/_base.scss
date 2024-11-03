@@ -1,1 +1,7 @@
-// base styles
+body {
+    background: $background-color;
+    background-image: $background-image;
+    background-repeat: repeat;
+    color: $text-color;
+    font-size: $font-size-base;
+  }
