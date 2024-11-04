@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { LocaleService } from 'src/app/core/services/locale.service';
 import { ILocaleCollection } from 'src/app/core/interfaces/i-locale';
+import { LoadingService } from 'src/app/core/services/loading.service';
 
 @Component({
   selector: 'app-login',
@@ -34,6 +35,7 @@ export class LoginComponent {
   showRegister: boolean = false;
   private readonly cdr = inject(ChangeDetectorRef);
   private readonly localeService = inject(LocaleService);
+  private readonly loadingService = inject(LoadingService);
 
   labels: ILocaleCollection = {};
   warnings: ILocaleCollection = {};
@@ -59,23 +61,36 @@ export class LoginComponent {
   }
 
   ngOnInit() {
+    this.loadingService.showLoader();
     const requestedLocales = {
       labels: ['login', 'email', 'password', 'name'],
-      warnings: ['requiredField', 'nameRequired', 'mailRequired', 'passwordRequired', 'loginRequired'],
+      warnings: [
+        'requiredField',
+        'nameRequired',
+        'mailRequired',
+        'passwordRequired',
+        'loginRequired',
+      ],
       buttons: ['login', 'register'],
       headers: ['login', 'register'],
-      messages: ['noAccount', 'haveAccount']
+      messages: ['noAccount', 'haveAccount'],
     };
 
-    this.localeService.getLocales(requestedLocales).subscribe((locales) => {
-      
-      this.labels = locales['labels'] || {};
-      this.warnings = locales['warnings'] || {};
-      this.buttons = locales['buttons'] || {};
-      this.headers = locales['headers'] || {};
-      this.messages = locales['messages']
+    this.localeService.getLocales(requestedLocales).subscribe({
+      next: (locales) => {
+        this.labels = locales['labels'] || {};
+        this.warnings = locales['warnings'] || {};
+        this.buttons = locales['buttons'] || {};
+        this.headers = locales['headers'] || {};
+        this.messages = locales['messages'];
+      },
+      complete: () => {
+        this.loadingService.hideLoader();
+      },
+      error: () => {
+        this.loadingService.hideLoader();
+      },
     });
-  
   }
 
   login() {

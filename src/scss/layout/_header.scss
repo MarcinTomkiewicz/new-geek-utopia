@@ -1,28 +1,13 @@
-@import 'variables';
+@import "variables";
 
 header {
-    background-color: $primary-color;
+  color: $text-light;
+  display: flex;
+  align-items: center;
+  border-radius: $border-radius;
+
+  .logo {
+    font-size: $font-size-large;
     color: $text-light;
-    padding: $padding-medium;
-    display: flex;
-    align-items: center;
-    border-radius: $border-radius;
-  
-    .logo {
-      font-size: $font-size-large;
-      color: $text-light;
-    }
-  
-    .nav {
-      display: flex;
-      gap: $padding-small;
-  
-      a {
-        color: $text-light;
-        text-decoration: none;
-        &:hover {
-          color: $accent-color;
-        }
-      }
-    }
   }
+}

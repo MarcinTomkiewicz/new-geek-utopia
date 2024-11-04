@@ -1,23 +1,31 @@
 // vendors styles
-@import 'variables';
-@import 'mixins/default_flex';
+@import "variables";
+@import "mixins/default_flex";
 
-// Teraz możesz ustawiać kolory używane przez komponenty PrimeNG
 :root {
   --primary-color: #{$primary-color};
   --secondary-color: #{$secondary-color};
+  --font-size: #{$font-size-base};
 }
 
 .p-card {
-  background-color: $secondary-color !important; // Ustaw tło karty
-  color: $text-color !important; // Ustaw kolor tekstu
+  background-color: $secondary-color !important;
+  color: $text-color !important;
+  border: $text-color 1px solid;
+}
+
+eyeicon {
+  color: $text-color !important;
 }
 
 .p-card-title {
+  font-family: "Montserrat", sans-serif;
   text-align: center;
+  font-size: 1rem;
 }
 
 .p-card-body {
+  font-family: "Montserrat", sans-serif;
   padding: 0.75rem;
 }
 
@@ -25,8 +33,15 @@
   width: 100%;
 }
 
+.p-error {
+  color: $accent-color;
+}
+
 .p-inputtext {
+  background-color: $primary-color;
+  color: $text-color;
   width: 100%;
+  padding: 0.5rem;
 }
 
 .p-field {
@@ -38,6 +53,39 @@
 
 // Dla buttonów
 .p-button {
-  background-color: $accent-color !important; // Ustaw kolor tła przycisku
-  border: none; // Upewnij się, że nie ma obramowania
+  background-color: $accent-color !important;
+  border: none;
+}
+
+.p-button-label {
+  font-family: "Montserrat", sans-serif;
+  font-size: $font-size-base;
+}
+
+.p-menubar {
+  background-color: $secondary-color;
+  font-family: "Montserrat", sans-serif;
+  font-size: $font-size-base;
+
+  .p-menuitem-active > .p-menuitem-content {
+    background-color: $primary-color!important;
+  }
+  .p-menuitem-link {
+    color: $text-color !important;
+    border-radius: $border-radius;
+
+    &:hover {
+        background-color: $primary-color;
+    }
+  }
+
+  .p-submenu-list {
+    background-color: $secondary-color; // Tło submenu
+
+    .p-menuitem-link {
+      &:hover {
+        background-color: $primary-color; // Kolor hover dla linków w submenu
+      }
+    }
+  }
 }

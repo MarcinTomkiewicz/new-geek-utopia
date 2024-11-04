@@ -10,3 +10,9 @@
   align-items: center;
   justify-content: space-between;
 }
+
+@mixin wrapper-with-gap($direction, $gap) {
+  display: flex;
+  flex-direction: $direction;
+  gap: $gap
+}

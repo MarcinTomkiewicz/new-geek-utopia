@@ -31,34 +31,6 @@ export class LocaleService {
     }
   }
 
-  // getLabels(
-  //   keys: string[],
-  //   locale: string = this.defaultLocale
-  // ): Observable<ILabelCollection> {
-  //   const filter = [
-  //     ...keys.map((key) => `filters[key][$eq]=${key}`),
-  //     `filters[locale][$eq]=${locale}`,
-  //   ].join('&');
-
-  //   return this.strapiService.get(`labels?${filter}`).pipe(
-  //     map((response: any) =>
-  //       response.data.reduce((acc: ILabelCollection, label: ILabelItem) => {
-  //         acc[label.key] = label.content;
-  //         return acc;
-  //       }, {})
-  //     )
-  //   );
-  // }
-
-  // getSingleLabel(
-  //   key: string,
-  //   locale: string = this.defaultLocale
-  // ): Observable<string> {
-  //   return this.strapiService
-  //     .get(`labels?filters[key][$eq]=${key}?locale=${locale}`)
-  //     .pipe(map((response: any) => response.data[0]?.attributes?.text || ''));
-  // }
-
   private getLocaleGroup(
     group: string,
     keys: string[],

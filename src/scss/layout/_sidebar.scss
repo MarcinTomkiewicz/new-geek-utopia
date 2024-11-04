@@ -1,11 +1,18 @@
 @import "variables";
+@import "mixins/default_flex";
+
+:host {
+}
 
 .sidebar {
-width: 15%;
+  width: 15%;
 }
 
 .sidebar-card {
   height: 100px;
   background-color: $secondary-color;
   width: 100%;
+  border: $text-color 1px solid;
+  border-radius: $border-radius;
+  margin: 0;
 }

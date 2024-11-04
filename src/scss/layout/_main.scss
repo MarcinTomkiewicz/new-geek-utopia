@@ -4,7 +4,7 @@
   display: flex;
   flex: 1;
   justify-content: space-between;
-  gap: $base-gap;
+  gap: $small-gap;
   
   .content {
     border-radius: $border-radius;
@@ -12,5 +12,6 @@
     padding: 20px;
     background-color: $secondary-color;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border: $text-color 1px solid;
   }
 }
