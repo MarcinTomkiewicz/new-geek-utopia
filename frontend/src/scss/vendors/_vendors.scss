@@ -81,6 +81,7 @@ eyeicon {
 
   .p-submenu-list {
     background-color: $secondary-color; // Tło submenu
+    width: max-content;
 
     .p-menuitem-link {
       &:hover {
