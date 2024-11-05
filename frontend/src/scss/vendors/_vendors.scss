@@ -68,14 +68,20 @@ eyeicon {
   font-size: $font-size-base;
 
   .p-menuitem-active > .p-menuitem-content {
-    background-color: $primary-color!important;
+    background-color: $primary-color !important;
   }
+
+  .p-menuitem:not(.p-highlight):not(.p-disabled).p-focus > .p-menuitem-content {
+    background-color: transparent;
+  }
+
   .p-menuitem-link {
     color: $text-color !important;
     border-radius: $border-radius;
+    background-color: transparent;
 
     &:hover {
-        background-color: $primary-color;
+      background-color: $primary-color;
     }
   }
 
