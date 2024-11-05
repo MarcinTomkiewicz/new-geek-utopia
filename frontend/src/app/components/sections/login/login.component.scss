@@ -1,0 +1,11 @@
+@import 'mixins/default_flex';
+@import 'variables';
+
+.form-settings {
+    @include flex-wrapper(column);
+    gap: $base-gap;
+}
+
+.p-button {
+    width: 100%;
+  }

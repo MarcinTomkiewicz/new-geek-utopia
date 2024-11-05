@@ -1,0 +1,11 @@
+@import 'variables';
+
+// layout styles
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    gap: $base-gap - 10px;
+    padding: $padding-medium;
+    width: 85%;
+}

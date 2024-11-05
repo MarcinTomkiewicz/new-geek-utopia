@@ -1,0 +1,17 @@
+@import 'variables';
+
+.main-layout {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  gap: $small-gap;
+  
+  .content {
+    border-radius: $border-radius;
+    flex: 1;
+    padding: 20px;
+    background-color: $secondary-color;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border: $text-color 1px solid;
+  }
+}

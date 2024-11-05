@@ -1,0 +1,36 @@
+// Kolory
+$primary-color: #6E3BA8; // Kolor tła elementów menu, inputów
+$secondary-color: rgba(124, 11, 142, 0.7); // Tło sekcji z opacity 0.7
+$accent-color: #FF5722; // Możesz użyć innego koloru akcentującego
+$background-color: #FFFFFF; // Tło strony
+$background-image: url('public/background.png'); // Ścieżka do obrazka tła
+$text-color: #F7FCFC; // Kolor tekstu
+$text-dark: #333333; // Dark text color for contrast
+$text-light: #F7FCFC; // Jasny kolor tekstu
+
+// Odstępy
+$padding-small: 0.5rem;
+$padding-medium: 1rem;
+$padding-large: 2rem;
+
+// Fonty
+$font-family: 'Arial', sans-serif;
+$font-size-base: 14px;
+$font-size-large: 1.25rem;
+$font-size-small: 0.875rem;
+
+// Breakpointy
+$breakpoint-small: 480px; // Telefony
+$breakpoint-medium: 768px; // Tablety
+$breakpoint-large: 1024px; // Laptopy
+$breakpoint-xlarge: 1200px; // Duże ekrany
+
+// Inne
+$border-radius: 5px;
+$sidebar-width: 250px;
+$base-gap: 20px;
+$small-gap: 10px;
+
+// Dodatkowe zmienne
+$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Cień do elementów
+$transition-duration: 0.3s; // Czas trwania przejść

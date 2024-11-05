@@ -1,0 +1,13 @@
+@import "variables";
+
+header {
+  color: $text-light;
+  display: flex;
+  align-items: center;
+  border-radius: $border-radius;
+
+  .logo {
+    font-size: $font-size-large;
+    color: $text-light;
+  }
+}
