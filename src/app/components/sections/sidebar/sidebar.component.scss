@@ -1,6 +1,0 @@
-@import 'variables';
-@import 'mixins/default_flex';
-
-:host {
-    @include wrapper-with-gap(column, $small-gap);
-}
