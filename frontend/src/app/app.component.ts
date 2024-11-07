@@ -6,8 +6,8 @@ import { SidebarComponent } from './components/sections/sidebar/sidebar.componen
 import { FooterComponent } from './components/sections/footer/footer.component';
 import { RightPanelComponent } from './components/sections/right-panel/right-panel.component';
 import { ToastModule } from 'primeng/toast';
-import { LoadingService } from './core/services/loading.service';
-import { LoadingOverlayComponent } from './components/common/loading-overlay/loading-overlay.component';
+import { LoadingService } from './core/services/state/loading/loading.service';
+import { LoadingOverlayComponent } from './shared/components/loading-overlay/loading-overlay.component';
 import { CommonModule } from '@angular/common';
 
 @Component({

@@ -8,35 +8,29 @@
   --font-size: #{$font-size-base};
 }
 
+/* PrimeNG Component Styles */
+
+/* Card */
 .p-card {
   background-color: $secondary-color !important;
   color: $text-color !important;
-  border: $text-color 1px solid;
+  border: 1px solid $text-color;
+  
+  &-title, &-body {
+    font-family: "Montserrat", sans-serif;
+  }
+
+  &-title {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  &-body {
+    padding: 0.75rem;
+  }
 }
 
-eyeicon {
-  color: $text-color !important;
-}
-
-.p-card-title {
-  font-family: "Montserrat", sans-serif;
-  text-align: center;
-  font-size: 1rem;
-}
-
-.p-card-body {
-  font-family: "Montserrat", sans-serif;
-  padding: 0.75rem;
-}
-
-.p-inputwrapper {
-  width: 100%;
-}
-
-.p-error {
-  color: $accent-color;
-}
-
+/* Input Text */
 .p-inputtext {
   background-color: $primary-color;
   color: $text-color;
@@ -44,6 +38,12 @@ eyeicon {
   padding: 0.5rem;
 }
 
+/* Input Wrapper */
+.p-inputwrapper {
+  width: 100%;
+}
+
+/* Field */
 .p-field {
   @include flex-wrapper(column);
   align-items: baseline;
@@ -51,17 +51,59 @@ eyeicon {
   gap: 5px;
 }
 
-// Dla buttonów
+/* Button */
 .p-button {
   background-color: $accent-color !important;
   border: none;
+
+  &-label {
+    font-family: "Montserrat", sans-serif;
+    font-size: $font-size-base;
+  }
 }
 
-.p-button-label {
-  font-family: "Montserrat", sans-serif;
-  font-size: $font-size-base;
+/* Error Text */
+.p-error {
+  color: $accent-color;
 }
 
+/* Panel Menu */
+.p-panelmenu {
+  &-header-content {
+    background: transparent;
+    border: 0;
+    color: $text-color;
+  }
+
+  &-panel {
+    margin-bottom: 10px;
+  }
+
+  &-content {
+    background: transparent;
+    border: 0;
+    margin-left: 10px;
+
+    & &-action {
+      color: $text-color;
+      padding: 1.25rem;
+      font-weight: 100;
+    }
+
+    .p-menuitem > .p-menuitem-content {
+      padding: 10px;
+      color: $text-color;
+      border-radius: 8px;
+      width: 100%;
+      
+      &:hover {
+        background-color: $secondary-color;
+      }
+    }
+  }
+}
+
+/* Menubar */
 .p-menubar {
   background-color: $secondary-color;
   font-family: "Montserrat", sans-serif;
@@ -86,13 +128,22 @@ eyeicon {
   }
 
   .p-submenu-list {
-    background-color: $secondary-color; // Tło submenu
+    background-color: $secondary-color;
     width: max-content;
 
     .p-menuitem-link {
       &:hover {
-        background-color: $primary-color; // Kolor hover dla linków w submenu
+        background-color: $primary-color;
       }
     }
   }
+}
+
+.p-iconfield {
+  width: 80%;
+}
+
+/* Custom Icon */
+eyeicon, .pi-search {
+  color: $text-color !important;
 }

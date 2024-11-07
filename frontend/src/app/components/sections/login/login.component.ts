@@ -11,9 +11,9 @@ import { PasswordModule } from 'primeng/password';
 import { CardModule } from 'primeng/card';
 import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
-import { LocaleService } from 'src/app/core/services/locale.service';
+import { LocaleService } from 'src/app/core/services/state/locale/locale.service';
 import { ILocaleCollection } from 'src/app/core/interfaces/i-locale';
-import { LoadingService } from 'src/app/core/services/loading.service';
+import { LoadingService } from 'src/app/core/services/state/loading/loading.service';
 
 @Component({
   selector: 'app-login',
@@ -61,7 +61,6 @@ export class LoginComponent {
   }
 
   ngOnInit() {
-    this.loadingService.showLoader();
     const requestedLocales = {
       labels: ['login', 'email', 'password', 'name'],
       warnings: [
@@ -76,19 +75,16 @@ export class LoginComponent {
       messages: ['noAccount', 'haveAccount'],
     };
 
-    this.localeService.getLocales(requestedLocales).subscribe({
+    this.localeService.getLocales(requestedLocales, 'Login').subscribe({
       next: (locales) => {
         this.labels = locales['labels'] || {};
         this.warnings = locales['warnings'] || {};
         this.buttons = locales['buttons'] || {};
         this.headers = locales['headers'] || {};
-        this.messages = locales['messages'];
-      },
-      complete: () => {
-        this.loadingService.hideLoader();
+        this.messages = locales['messages'] = {};
       },
       error: () => {
-        this.loadingService.hideLoader();
+        // this.loadingService.hideLoader();
       },
     });
   }

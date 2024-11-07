@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoadingService {
   private activeRequests = 0;
@@ -12,6 +12,7 @@ export class LoadingService {
   // Wywoływane na początku ładowania dowolnego komponentu
   showLoader() {
     this.activeRequests++;
+
     this.updateLoadingState();
   }
 
@@ -19,6 +20,7 @@ export class LoadingService {
   hideLoader() {
     if (this.activeRequests > 0) {
       this.activeRequests--;
+
       this.updateLoadingState();
     }
   }

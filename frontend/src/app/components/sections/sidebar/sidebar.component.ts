@@ -1,30 +1,35 @@
 import { CommonModule, NgComponentOutlet } from '@angular/common';
 import { Component, inject, input, Type } from '@angular/core';
-import { LoadingService } from 'src/app/core/services/loading.service';
-import { SidebarService } from 'src/app/core/services/sidebar.service';
+import { SidebarService } from 'src/app/core/services/content/sidebar/sidebar.service';
+import { LoadingService } from 'src/app/core/services/state/loading/loading.service';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   imports: [NgComponentOutlet, CommonModule],
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.scss'
+  styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
-  private readonly sidebarService = inject(SidebarService)
-  private readonly loadingService = inject(LoadingService)
+  private readonly sidebarService = inject(SidebarService);
+  private readonly loadingService = inject(LoadingService);
   readonly side = input<'left' | 'right'>('left');
   public sidebarComponents: Type<any>[] = [];
 
   ngOnInit() {
-    this.loadingService.showLoader()
-    this.sidebarService.getSidebarContent(this.side()).subscribe({
-      next: (components) => {
-        this.sidebarComponents = components
-        this.loadingService.hideLoader()
-      },
-      error: () => this.loadingService.hideLoader(),
-      complete: () => this.loadingService.hideLoader(),
-    });
+    this.loadingService.showLoader();
+
+    this.sidebarService
+      .getSidebarContent(this.side(), `Sidebar-${this.side}`)
+      .subscribe({
+        next: (components) => {
+          this.sidebarComponents = components;
+          this.loadingService.hideLoader();
+        },
+        error: (err) => {
+          console.error('Error loading sidebar components', err);
+          this.loadingService.hideLoader();
+        },
+      });
   }
 }

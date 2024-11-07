@@ -1,5 +1,6 @@
 export interface IMenuItems {
     label: string;
     icon: string;
-    children?: IMenuItems[]
+    children?: IMenuItems[];
+    expanded?: boolean
 }
