@@ -27,9 +27,12 @@
     <div class="right-side">
       <p-iconField iconPosition="right">
         <p-inputIcon styleClass="pi pi-search" />
-        <input type="text" pInputText placeholder="Search" />
+        <input type="text" pInputText [placeholder]="locale['search']" />
       </p-iconField>
-      <div class="pi pi-user"></div>
+      <div class="pi pi-user" (click)="overlayPanel.toggle($event)" onkeypress></div>
+      <p-overlayPanel #overlayPanel >
+          <app-login-form></app-login-form>
+      </p-overlayPanel>
     </div>
   </ng-template>
 </p-menubar>

@@ -6,6 +6,7 @@
   --primary-color: #{$primary-color};
   --secondary-color: #{$secondary-color};
   --font-size: #{$font-size-base};
+  --font-family: #{"Montserrat", sans-serif};
 }
 
 /* PrimeNG Component Styles */
@@ -15,8 +16,9 @@
   background-color: $secondary-color !important;
   color: $text-color !important;
   border: 1px solid $text-color;
-  
-  &-title, &-body {
+
+  &-title,
+  &-body {
     font-family: "Montserrat", sans-serif;
   }
 
@@ -69,6 +71,8 @@
 
 /* Panel Menu */
 .p-panelmenu {
+  font-size: $font-size-base;
+
   &-header-content {
     background: transparent;
     border: 0;
@@ -95,7 +99,7 @@
       color: $text-color;
       border-radius: 8px;
       width: 100%;
-      
+
       &:hover {
         background-color: $secondary-color;
       }
@@ -143,7 +147,26 @@
   width: 80%;
 }
 
+.p-toast {
+  background-color: $secondary-color;
+  color: $text-color;
+
+  &-icon-close {
+    color: $text-color;
+  }
+}
+
+.p-overlaypanel {
+  color: $text-color;
+  background-color: $secondary-color;
+
+  &::before, &:after {
+    display: none;
+  }
+}
+
 /* Custom Icon */
-eyeicon, .pi-search {
+eyeicon,
+.pi-search {
   color: $text-color !important;
 }

@@ -11,6 +11,8 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { LocaleService } from 'src/app/core/services/state/locale/locale.service';
 import { ILocaleCollection } from 'src/app/core/interfaces/i-locale';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { LoginFormComponent } from 'src/app/shared/components/login-form/login-form.component';
 
 @Component({
   selector: 'app-navbar',
@@ -22,7 +24,9 @@ import { ILocaleCollection } from 'src/app/core/interfaces/i-locale';
     AvatarModule,
     InputTextModule,
     InputIconModule,
-    IconFieldModule
+    IconFieldModule,
+    OverlayPanelModule,
+    LoginFormComponent
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',

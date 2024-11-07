@@ -20,7 +20,7 @@ export class SidebarComponent {
     this.loadingService.showLoader();
 
     this.sidebarService
-      .getSidebarContent(this.side(), `Sidebar-${this.side}`)
+      .getSidebarContent(this.side())
       .subscribe({
         next: (components) => {
           this.sidebarComponents = components;

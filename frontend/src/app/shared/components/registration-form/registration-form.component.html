@@ -1,0 +1,71 @@
+<form
+[formGroup]="registrationForm"
+(ngSubmit)="register()"
+class="form-settings"
+>
+<div class="p-field">
+    <label for="name">{{ labels['name'] }}</label>
+    <input id="name" pInputText formControlName="name" />
+    <div
+      *ngIf="
+        registrationForm.get('name')?.invalid &&
+        registrationForm.get('name')?.touched
+      "
+      class="p-error"
+    >
+    {{warnings['nameRequired']}}
+    </div>
+  </div>
+
+  <div class="p-field">
+    <label for="email">{{ labels['email'] }}:</label>
+    <input id="email" pInputText formControlName="email" />
+    <div
+      *ngIf="
+        registrationForm.get('email')?.invalid &&
+        registrationForm.get('email')?.touched
+      "
+      class="p-error"
+    >
+    {{warnings['mailRequired']}}
+    </div>
+  </div>
+
+  <div class="p-field">
+    <label for="reg-username">{{ labels['login'] }}:</label>
+    <input id="reg-username" pInputText formControlName="regUsername" />
+    <div
+      *ngIf="
+        registrationForm.get('regUsername')?.invalid &&
+        registrationForm.get('regUsername')?.touched
+      "
+      class="p-error"
+    >
+    {{warnings['loginRequired']}}
+    </div>
+  </div>
+
+  <div class="p-field">
+    <label for="reg-password">{{ labels['password'] }}:</label>
+    <p-password
+      id="reg-password"
+      formControlName="regPassword"
+      toggleMask="true"
+      strongLabel="Silne"
+      weakLabel="Słabe"
+      mediumLabel="Średnie"
+      promptLabel="Wprowadź hasło"
+    ></p-password>
+    <div
+      *ngIf="
+        registrationForm.get('regPassword')?.invalid &&
+        registrationForm.get('regPassword')?.touched
+      "
+      class="p-error"
+    >
+    {{warnings['passwordRequired']}}
+    </div>
+  </div>
+
+  <p-button [label]="buttons['register']" type="submit"></p-button>
+  </form>

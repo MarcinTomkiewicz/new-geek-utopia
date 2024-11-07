@@ -1,0 +1,42 @@
+<form
+[formGroup]="loginForm"
+(ngSubmit)="login()"
+class="form-settings"
+>
+  <div class="p-field">
+    <label for="username">{{ labels['login'] }}:</label>
+    <input id="username" pInputText formControlName="username" />
+    <div
+      *ngIf="
+        loginForm.get('username')?.invalid &&
+        loginForm.get('username')?.touched
+      "
+      class="p-error"
+    >
+    {{warnings['loginRequired']}}
+    </div>
+  </div>
+
+  <div class="p-field">
+    <label for="password">{{ labels['password'] }}:</label>
+    <p-password
+      id="password"
+      formControlName="password"
+      toggleMask="true"
+      strongLabel="Silne"
+      weakLabel="Słabe"
+      mediumLabel="Średnie"
+      promptLabel="Wprowadź hasło"
+    ></p-password>
+    <div
+      *ngIf="
+        loginForm.get('password')?.invalid &&
+        loginForm.get('password')?.touched
+      "
+      class="p-error"
+    >
+      {{warnings['passwordRequired']}}
+    </div>
+  </div>
+
+  <p-button [label]="buttons['login']" type="submit"></p-button>

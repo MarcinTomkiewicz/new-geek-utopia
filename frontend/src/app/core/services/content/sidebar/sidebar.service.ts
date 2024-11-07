@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { InstaFeedComponent } from 'src/app/components/sections/insta-feed/insta-feed.component';
-import { LoginComponent } from 'src/app/components/sections/login/login.component';
+import { UserSidePanelComponent } from 'src/app/components/sections/user-side-panel/user-side-panel.component';
 import { SideMenuComponent } from 'src/app/components/sections/side-menu/side-menu.component';
 import { LoadingService } from '../../state/loading/loading.service';
 
@@ -11,7 +11,7 @@ import { LoadingService } from '../../state/loading/loading.service';
 export class SidebarService {
   // BehaviorSubject dla komponentów lewego i prawego sidebara
   private readonly leftSidebarComponents = new BehaviorSubject<any[]>([
-    LoginComponent,
+    UserSidePanelComponent,
     SideMenuComponent
   ]);
 
@@ -21,7 +21,7 @@ export class SidebarService {
   private readonly loadingService = inject(LoadingService)
 
   // Metoda do pobierania odpowiedniego strumienia w zależności od parametru side
-  getSidebarContent(side: 'left' | 'right', fromWhere: string): Observable<any[]> {
+  getSidebarContent(side: 'left' | 'right'): Observable<any[]> {
     // Pokazanie loadera przed zwróceniem Observable
 
     const sidebarObservable = side === 'left' 

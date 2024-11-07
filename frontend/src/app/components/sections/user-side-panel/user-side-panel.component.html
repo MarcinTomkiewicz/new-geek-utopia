@@ -1,0 +1,12 @@
+<p-card [header]="showRegister ? headers['register'] : headers['login']">
+  <app-login-form *ngIf="!showRegister"></app-login-form>
+  <app-registration-form *ngIf="showRegister"></app-registration-form>
+
+  <p
+    class="register-link"
+    (click)="toggleRegister()"
+    style="cursor: pointer"
+  >
+    {{ showRegister ? messages['haveAccount'] : messages['noAccount'] }}
+  </p>
+</p-card>
