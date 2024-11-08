@@ -65,8 +65,11 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "name": {
-      "type": "string"
+    "userData": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::user-data.user-data",
+      "mappedBy": "user"
     }
   }
 }

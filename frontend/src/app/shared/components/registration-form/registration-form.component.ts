@@ -59,6 +59,7 @@ export class RegistrationFormComponent {
         this.warnings = locales['warnings'] || {};
         this.buttons = locales['buttons'] || {};
         this.headers = locales['headers'] || {};
+        this.messages = locales['messages'] || {}
       },
       error: (error) => {
         console.error(error);
@@ -72,7 +73,7 @@ export class RegistrationFormComponent {
     if (this.registrationForm.valid) {
       const { name, email, regUsername, regPassword } = this.registrationForm.value;
 
-      console.log("Sending registration data:", { regUsername, email, regPassword });
+      console.log("Sending registration data:", { regUsername, email, regPassword, name });
 
       this.authService.register(regUsername, email, regPassword, name).subscribe({
         next: () => {
