@@ -6,6 +6,8 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ILocaleCollection } from 'src/app/core/interfaces/i-locale';
+import { AuthService } from 'src/app/core/services/http/auth/auth.service';
+import { LoadingService } from 'src/app/core/services/state/loading/loading.service';
 import { LocaleService } from 'src/app/core/services/state/locale/locale.service';
 
 @Component({
@@ -20,12 +22,15 @@ export class RegistrationFormComponent {
 
   private readonly messageService = inject(MessageService);
   private readonly localeService = inject(LocaleService);
+  private readonly authService = inject(AuthService)
+  private readonly loadingService = inject(LoadingService)
   private readonly fb = inject(FormBuilder);
 
   labels: ILocaleCollection = {};
   warnings: ILocaleCollection = {};
   buttons: ILocaleCollection = {};
   headers: ILocaleCollection = {};
+  messages: ILocaleCollection = {};
 
   ngOnInit() {
     this.registrationForm = this.fb.group({
@@ -45,9 +50,10 @@ export class RegistrationFormComponent {
       ],
       buttons: ['register'],
       headers: ['register', 'success', 'fail'],
+      messages: ['registrationSuccess', 'registrationFailed']
     };
 
-    this.localeService.getLocales(requestedLocales, 'Login').subscribe({
+    this.localeService.getLocales(requestedLocales).subscribe({
       next: (locales) => {
         this.labels = locales['labels'] || {};
         this.warnings = locales['warnings'] || {};
@@ -61,11 +67,43 @@ export class RegistrationFormComponent {
   }
 
   register() {
+    this.loadingService.showLoader(); // Pokazanie loadera na czas rejestracji
+
     if (this.registrationForm.valid) {
-      // Przykładowa akcja po rejestracji
+      const { name, email, regUsername, regPassword } = this.registrationForm.value;
+
+      console.log("Sending registration data:", { regUsername, email, regPassword });
+
+      this.authService.register(regUsername, email, regPassword, name).subscribe({
+        next: () => {
+          this.loadingService.hideLoader(); // Ukrycie loadera po udanej rejestracji
+          this.messageService.add({
+            summary: this.headers['success'],
+            detail: this.messages['registrationSuccess'],
+            severity: 'success',
+            styleClass: 'p-toast',
+          });
+
+          // Ewentualne przekierowanie użytkownika po udanej rejestracji
+          // this.router.navigate(['/login']);
+        },
+        error: (error) => {
+          this.loadingService.hideLoader(); // Ukrycie loadera w przypadku błędu
+          this.messageService.add({
+            summary: this.headers['fail'],
+            detail: this.messages['registrationFailed'],
+            severity: 'error',
+            styleClass: 'p-toast',
+          });
+          console.error('Registration error:', error);
+        },
+      });
+    } else {
+      this.loadingService.hideLoader(); // Ukrycie loadera, jeśli formularz jest niepoprawny
       this.messageService.add({
-        summary: 'Registration Success',
-        detail: 'Registration was successful!',
+        summary: this.headers['fail'] || 'Registration Failed',
+        detail: this.warnings['requiredField'] || 'Please fill in all required fields.',
+        severity: 'warn',
         styleClass: 'p-toast',
       });
     }

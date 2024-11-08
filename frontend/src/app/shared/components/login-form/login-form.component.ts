@@ -6,6 +6,8 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ILocaleCollection } from 'src/app/core/interfaces/i-locale';
+import { AuthService } from 'src/app/core/services/http/auth/auth.service';
+import { LoadingService } from 'src/app/core/services/state/loading/loading.service';
 import { LocaleService } from 'src/app/core/services/state/locale/locale.service';
 
 @Component({
@@ -20,12 +22,15 @@ export class LoginFormComponent {
 
   private readonly messageService = inject(MessageService);
   private readonly localeService = inject(LocaleService)
+  private readonly authService = inject(AuthService)
+  private readonly loadingService = inject(LoadingService)
   private readonly fb = inject(FormBuilder);
 
   labels: ILocaleCollection = {};
   warnings: ILocaleCollection = {};
   buttons: ILocaleCollection = {};
   headers: ILocaleCollection = {};
+  messages: ILocaleCollection = {};
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -40,14 +45,16 @@ export class LoginFormComponent {
       ],
       buttons: ['login'],
       headers: ['login', 'success', 'fail'],
+      messages: ['loginSuccess', 'loginFailed']
     };
 
-    this.localeService.getLocales(requestedLocales, 'Login').subscribe({
+    this.localeService.getLocales(requestedLocales).subscribe({
       next: (locales) => {
         this.labels = locales['labels'] || {};
         this.warnings = locales['warnings'] || {};
         this.buttons = locales['buttons'] || {};
         this.headers = locales['headers'] || {};
+        this.messages = locales['messages'] || {};
       },
       error: (error) => {
         console.error(error)
@@ -56,10 +63,41 @@ export class LoginFormComponent {
   }
 
   login() {
+    this.loadingService.showLoader(); // Pokazanie loadera na czas logowania
+
     if (this.loginForm.valid) {
+      const { username, password } = this.loginForm.value;
+      
+      this.authService.login(username, password).subscribe({
+        next: () => {
+          this.loadingService.hideLoader(); // Ukrycie loadera po udanym logowaniu
+          this.messageService.add({
+            summary: this.headers['success'],
+            detail: this.messages['loginSuccess'],
+            severity: 'success',
+            styleClass: 'p-toast',
+          });
+          
+          // Ewentualne przekierowanie użytkownika po udanym logowaniu
+          // this.router.navigate(['/dashboard']);
+        },
+        error: (error) => {
+          this.loadingService.hideLoader(); // Ukrycie loadera w przypadku błędu
+          this.messageService.add({
+            summary: this.headers['fail'],
+            detail: this.messages['loginError'],
+            severity: 'error',
+            styleClass: 'p-toast',
+          });
+          console.error('Login error:', error);
+        },
+      });
+    } else {
+      this.loadingService.hideLoader(); // Ukrycie loadera, jeśli formularz jest niepoprawny
       this.messageService.add({
-        summary: 'Login Success',
-        detail: 'Login was successful!',
+        summary: this.headers['fail'] || 'Login Failed',
+        detail: this.warnings['loginRequired'] || 'Please enter both username and password.',
+        severity: 'warn',
         styleClass: 'p-toast',
       });
     }

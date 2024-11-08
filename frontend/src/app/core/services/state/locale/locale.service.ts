@@ -41,7 +41,6 @@ public getDefaultLocale(): string {
   private getLocaleGroup(
     group: string,
     keys: string[],
-    fromWhere: string,
     locale: string = this.defaultLocale,
   ): Observable<ILocaleCollection> {
     const filters = [
@@ -65,9 +64,9 @@ public getDefaultLocale(): string {
     );
   }
 
-  getLocales(groups: ILocaleGroups, fromWhere: string): Observable<IGroupedLocales> {
+  getLocales(groups: ILocaleGroups): Observable<IGroupedLocales> {
     const requests = Object.keys(groups).map((group) =>
-      this.getLocaleGroup(group, groups[group], fromWhere)
+      this.getLocaleGroup(group, groups[group])
     );
   
     // Pokazanie loadera na początku metody

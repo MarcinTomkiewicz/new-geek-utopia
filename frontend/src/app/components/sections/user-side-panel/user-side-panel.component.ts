@@ -26,34 +26,18 @@ export class UserSidePanelComponent {
   showRegister: boolean = false;
   private readonly cdr = inject(ChangeDetectorRef);
   private readonly localeService = inject(LocaleService);
-  // private readonly loadingService = inject(LoadingService);
 
-  // labels: ILocaleCollection = {};
-  // warnings: ILocaleCollection = {};
-  // buttons: ILocaleCollection = {};
   headers: ILocaleCollection = {};
   messages: ILocaleCollection = {};
 
   ngOnInit() {
     const requestedLocales = {
-      // labels: ['login', 'email', 'password', 'name'],
-      // warnings: [
-      //   'requiredField',
-      //   'nameRequired',
-      //   'mailRequired',
-      //   'passwordRequired',
-      //   'loginRequired',
-      // ],
-      // buttons: ['login', 'register'],
       headers: ['login', 'register'],
       messages: ['noAccount', 'haveAccount'],
     };
 
-    this.localeService.getLocales(requestedLocales, 'Login').subscribe({
+    this.localeService.getLocales(requestedLocales).subscribe({
       next: (locales) => {
-        // this.labels = locales['labels'] || {};
-        // this.warnings = locales['warnings'] || {};
-        // this.buttons = locales['buttons'] || {};
         this.headers = locales['headers'] || {};
         this.messages = locales['messages'] || {};
       },

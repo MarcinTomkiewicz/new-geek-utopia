@@ -49,7 +49,7 @@ export class NavbarComponent {
           console.error('Error loading menu items', err);
         }
       });
-      this.localeService.getLocales(requestedLocales, 'Navbar-Locales').subscribe({
+      this.localeService.getLocales(requestedLocales).subscribe({
         next: (locales) => {
           this.locale = locales['labels'] || {}
         }

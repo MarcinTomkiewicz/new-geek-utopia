@@ -8,7 +8,6 @@
 .right-side{
     @include flex-wrapper(row);
     color: $text-color;
-    margin-right: 20px;
 }
 
 .right-side > p-iconfield {
