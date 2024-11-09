@@ -1,0 +1,31 @@
+.critical-error-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    z-index: 1000;
+  }
+  
+  .critical-error-message {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    max-width: 80%;
+  }
+  
+  .critical-error-message h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .critical-error-message p {
+    font-size: 1rem;
+  }

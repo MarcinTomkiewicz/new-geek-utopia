@@ -36,28 +36,28 @@ export class AuthService {
     name: string
   ): Observable<AuthResponse> {
     const registerData = { username, email, password };
-    console.log(username, email, password, name);
-
     return this.strapiService
       .post<AuthResponse>(`${this.baseUrl}/local/register`, registerData)
       .pipe(
         switchMap((userResponse: any) => {
-          // Drugi krok: Utwórz rekord w tabeli 'user-data' z polem 'name' i powiąż go z utworzonym użytkownikiem
+          console.log(userResponse);
+
           const userId = userResponse.user.id;
           const usersData = { data: { name: name, user: userId } };
-          console.log(usersData );
 
-          return this.strapiService.post<AuthResponse>(`users-data`, usersData);
+          return this.strapiService
+            .post<AuthResponse>(`users-data`, usersData)
+            .pipe(
+              switchMap(() => this.login(username, password))
+            );
         })
       );
   }
 
-  // Wylogowanie użytkownika
   logout(): void {
-    this.tokenService.removeToken(); // Użyj TokenService
+    this.tokenService.removeToken();
   }
 
-  // Metoda pomocnicza do sprawdzania, czy użytkownik jest zalogowany
   isAuthenticated(): boolean {
     return !!this.tokenService.getToken();
   }

@@ -1,12 +1,28 @@
 // Kolory
-$primary-color: #6E3BA8; // Kolor tła elementów menu, inputów
+$primary-color: #6e3ba8; // Kolor tła elementów menu, inputów
 $secondary-color: rgba(124, 11, 142, 0.7); // Tło sekcji z opacity 0.7
-$accent-color: #FF5722; // Możesz użyć innego koloru akcentującego
-$background-color: #FFFFFF; // Tło strony
-$background-image: url('public/background.png'); // Ścieżka do obrazka tła
-$text-color: #F7FCFC; // Kolor tekstu
+$accent-color: #ff5722; // Możesz użyć innego koloru akcentującego
+$background-color: #ffffff; // Tło strony
+$background-image: url("public/background.png"); // Ścieżka do obrazka tła
+$text-color: #f7fcfc; // Kolor tekstu
 $text-dark: #333333; // Dark text color for contrast
-$text-light: #F7FCFC; // Jasny kolor tekstu
+$text-light: #f7fcfc; // Jasny kolor tekstu
+$iron-man: linear-gradient(90deg, 
+    #e7b300,
+    #e10000,
+    #ff6a00,
+    #b4b4b4,
+    #e10000,
+    #e7b300 
+);
+$arc-reactor: linear-gradient(
+  135deg,
+  transparent,
+  rgba(0, 255, 255, 0.8),
+  rgba(0, 255, 255, 0.4),
+  rgba(0, 255, 255, 0.8),
+  transparent
+);
 
 // Odstępy
 $padding-small: 0.5rem;
@@ -14,7 +30,7 @@ $padding-medium: 1rem;
 $padding-large: 2rem;
 
 // Fonty
-$font-family: 'Arial', sans-serif;
+$font-family: "Arial", sans-serif;
 $font-size-base: 14px;
 $font-size-large: 1.25rem;
 $font-size-small: 0.875rem;

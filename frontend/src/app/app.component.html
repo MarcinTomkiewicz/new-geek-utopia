@@ -15,6 +15,7 @@
     <section class="content">
       <p-toast></p-toast>
       <app-loading-overlay *ngIf="loadingService.loading$ | async"></app-loading-overlay>
+      <app-error-overlay *ngIf="errorHandlingService.error$ | async"></app-error-overlay>
       <router-outlet></router-outlet>
     </section>
 

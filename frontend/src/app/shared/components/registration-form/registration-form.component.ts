@@ -84,6 +84,7 @@ export class RegistrationFormComponent {
             severity: 'success',
             styleClass: 'p-toast',
           });
+          this.registrationForm.reset();
 
           // Ewentualne przekierowanie użytkownika po udanej rejestracji
           // this.router.navigate(['/login']);
@@ -102,8 +103,8 @@ export class RegistrationFormComponent {
     } else {
       this.loadingService.hideLoader(); // Ukrycie loadera, jeśli formularz jest niepoprawny
       this.messageService.add({
-        summary: this.headers['fail'] || 'Registration Failed',
-        detail: this.warnings['requiredField'] || 'Please fill in all required fields.',
+        summary: this.headers['fail'],
+        detail: this.warnings['requiredField'],
         severity: 'warn',
         styleClass: 'p-toast',
       });
