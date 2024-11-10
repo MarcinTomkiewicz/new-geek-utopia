@@ -7,6 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ILocaleCollection } from 'src/app/core/interfaces/i-locale';
 import { AuthService } from 'src/app/core/services/http/auth/auth.service';
+import { ErrorHandlingService } from 'src/app/core/services/state/error-handling/error-handling.service';
 import { LoadingService } from 'src/app/core/services/state/loading/loading.service';
 import { LocaleService } from 'src/app/core/services/state/locale/locale.service';
 
@@ -24,6 +25,7 @@ export class LoginFormComponent {
   private readonly localeService = inject(LocaleService)
   private readonly authService = inject(AuthService)
   private readonly loadingService = inject(LoadingService)
+  private readonly errorHandlingService = inject(ErrorHandlingService)
   private readonly fb = inject(FormBuilder);
 
   labels: ILocaleCollection = {};
@@ -57,7 +59,7 @@ export class LoginFormComponent {
         this.messages = locales['messages'] || {};
       },
       error: (error) => {
-        console.error(error)
+        this.errorHandlingService.displayNonCriticalError(error.header, error.message)
       },
     });
   }
@@ -82,24 +84,13 @@ export class LoginFormComponent {
           // this.router.navigate(['/dashboard']);
         },
         error: (error) => {
-          this.loadingService.hideLoader(); // Ukrycie loadera w przypadku błędu
-          this.messageService.add({
-            summary: this.headers['fail'],
-            detail: this.messages['loginError'],
-            severity: 'error',
-            styleClass: 'p-toast',
-          });
-          console.error('Login error:', error);
+          this.loadingService.hideLoader(); // Ukrycie loadera w przypadku błędu          
+          this.errorHandlingService.displayNonCriticalError(this.headers['fail'], this.messages['loginError'])
         },
       });
     } else {
       this.loadingService.hideLoader(); // Ukrycie loadera, jeśli formularz jest niepoprawny
-      this.messageService.add({
-        summary: this.headers['fail'] || 'Login Failed',
-        detail: this.warnings['loginRequired'] || 'Please enter both username and password.',
-        severity: 'warn',
-        styleClass: 'p-toast',
-      });
+      this.errorHandlingService.displayNonCriticalError(this.headers['fail'], this.warnings['loginRequired'])
     }
   }
 }

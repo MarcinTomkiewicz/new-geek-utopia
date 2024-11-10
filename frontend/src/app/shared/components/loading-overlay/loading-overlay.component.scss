@@ -19,8 +19,8 @@
   // padding: 5px; /* Wtapianie w tło */
 
   /* Gradient na bokach obrazu, aby dawał efekt zanikania */
-  -webkit-mask-image: radial-gradient(circle, black 0%, rgba(0, 0, 0, 0) 70%);
-  mask-image: radial-gradient(circle, black 0%, rgba(0, 0, 0, 0) 70%);
+  -webkit-mask-image: radial-gradient(circle, black 10%, rgba(0, 0, 0, 0) 88%);
+  mask-image: radial-gradient(circle, black 16%, rgba(0, 0, 0, 0) 82%);
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
 }

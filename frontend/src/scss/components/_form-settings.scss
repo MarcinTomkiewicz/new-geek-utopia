@@ -1,5 +1,5 @@
 @import 'mixins/default_flex';
-@import 'variables';
+@import 'variables/variables';
 
 .form-settings {
     @include flex-wrapper(column);

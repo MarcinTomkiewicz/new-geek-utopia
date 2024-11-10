@@ -30,8 +30,13 @@
         <input type="text" pInputText [placeholder]="locale['search']" />
       </p-iconField>
       <div class="pi pi-user" (click)="overlayPanel.toggle($event)" onkeypress></div>
-      <p-overlayPanel #overlayPanel >
+      <p-overlayPanel #overlayPanel>
+        <ng-container *ngIf="authService.isAuthenticated(); else loginTemplate">
+          <app-user-menu></app-user-menu>
+        </ng-container>
+        <ng-template #loginTemplate>
           <app-login-form></app-login-form>
+        </ng-template>
       </p-overlayPanel>
     </div>
   </ng-template>

@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { IMenuItems } from 'src/app/core/interfaces/i-menu-item';
-import { LoadingService } from 'src/app/core/services/state/loading/loading.service';
 import { MenuService } from 'src/app/core/services/content/menu/menu.service';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { CardModule } from 'primeng/card';
 import { BadgeModule } from 'primeng/badge';
+import { ErrorHandlingService } from 'src/app/core/services/state/error-handling/error-handling.service';
 
 @Component({
   selector: 'app-side-menu',
@@ -16,16 +16,16 @@ import { BadgeModule } from 'primeng/badge';
 })
 export class SideMenuComponent {
   private readonly menuService = inject(MenuService);
-  private readonly loadingService = inject(LoadingService);
+  private readonly errorHandlingService = inject(ErrorHandlingService);
   menuItems!: IMenuItems[];
 
   ngOnInit() {
-    this.menuService.getMenuItems().subscribe({
+    this.menuService.getMenuItems('main').subscribe({
       next: (items) => {
         this.menuItems = items;
       },
       error: (err) => {
-        console.error('Error loading menu items', err);
+        this.errorHandlingService.displayNonCriticalError('Error', err);
       }
     });
   }

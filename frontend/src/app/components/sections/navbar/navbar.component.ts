@@ -13,6 +13,9 @@ import { LocaleService } from 'src/app/core/services/state/locale/locale.service
 import { ILocaleCollection } from 'src/app/core/interfaces/i-locale';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { LoginFormComponent } from 'src/app/shared/components/login-form/login-form.component';
+import { AuthService } from 'src/app/core/services/http/auth/auth.service';
+import { UserMenuComponent } from '../user-menu/user-menu.component';
+import { ErrorHandlingService } from 'src/app/core/services/state/error-handling/error-handling.service';
 
 @Component({
   selector: 'app-navbar',
@@ -26,27 +29,29 @@ import { LoginFormComponent } from 'src/app/shared/components/login-form/login-f
     InputIconModule,
     IconFieldModule,
     OverlayPanelModule,
-    LoginFormComponent
+    LoginFormComponent,
+    UserMenuComponent
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
   private readonly menuService = inject(MenuService);
-  private readonly loadingService = inject(LoadingService);
   private readonly localeService = inject(LocaleService)
+  public readonly authService = inject(AuthService)
+  private readonly errorHandlingService = inject(ErrorHandlingService);
   menuItems!: IMenuItems[];
   locale: ILocaleCollection = {};
 
     ngOnInit() {
     
       const requestedLocales = {labels: ['search']}
-      this.menuService.getMenuItems().subscribe({
+      this.menuService.getMenuItems('main').subscribe({
         next: (items) => {
           this.menuItems = items;
         },
         error: (err) => {
-          console.error('Error loading menu items', err);
+          this.errorHandlingService.displayNonCriticalError('Error', err);
         }
       });
       this.localeService.getLocales(requestedLocales).subscribe({

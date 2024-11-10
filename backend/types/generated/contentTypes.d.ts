@@ -706,6 +706,12 @@ export interface ApiMenuItemMenuItem extends Struct.CollectionTypeSchema {
       }>;
     parent: Schema.Attribute.Relation<'manyToOne', 'api::menu-item.menu-item'>;
     publishedAt: Schema.Attribute.DateTime;
+    type: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

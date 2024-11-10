@@ -23,10 +23,7 @@ class="form-settings"
       id="password"
       formControlName="password"
       toggleMask="true"
-      strongLabel="Silne"
-      weakLabel="Słabe"
-      mediumLabel="Średnie"
-      promptLabel="Wprowadź hasło"
+      [feedback]="false"
     ></p-password>
     <div
       *ngIf="
