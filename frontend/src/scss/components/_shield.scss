@@ -1,0 +1,81 @@
+@import 'variables';
+
+
+  .spinner-wrapper {
+    @include flex-center();
+    border: 1px solid rgba(170, 20, 40, 1);
+    border-radius: 100%;
+    width: 10rem;
+    height: 10rem;
+    background: rgba(170, 20, 40, 1);
+    background: radial-gradient(circle, rgba(170, 20, 40, 1) 45%, rgba(255, 255, 255, 1) 45%, #a5a5ab 59%, rgba(170, 20, 40, 1) 59%);
+    opacity: 1;
+    position: relative
+  }
+  
+  .spinner-wrapper::after {
+    position: absolute;
+    content: "";
+    width: 4rem;
+    height: 4rem;
+    background-color: #000042;
+    border-radius: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .spinner {
+    border-radius: 10px;
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid transparent;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(#ffffff, #a5a5ab);
+    -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.spinner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.5), rgba(165, 165, 171, 0) 70%);
+    z-index: -1;
+    filter: blur(5px);
+}
+
+.spinner::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(165, 165, 171, 0.4));
+    border-radius: 10px;
+    transform: translate(-50%, -50%) rotate(15deg);
+    opacity: 0.4;
+}
+
+  .spinning {
+    animation-name: spin;
+    animation-duration: 3500ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+}
+
