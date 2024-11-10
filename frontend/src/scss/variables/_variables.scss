@@ -1,13 +1,13 @@
 @import 'variables/superheroes';
 // Kolory
-$primary-color: #6e3ba8; // Kolor tła elementów menu, inputów
-$secondary-color: rgba(124, 11, 142, 0.7); // Tło sekcji z opacity 0.7
-$accent-color: $iron-man; // Możesz użyć innego koloru akcentującego
-$background-color: #ffffff; // Tło strony
-$background-image: url("public/background.png"); // Ścieżka do obrazka tła
-$text-color: #f7fcfc; // Kolor tekstu
-$text-dark: #333333; // Dark text color for contrast
-$text-light: #f7fcfc; // Jasny kolor tekstu
+$primary-color: #6e3ba8;
+$secondary-color: rgba(124, 11, 142, 0.7);
+$accent-color: $iron-man;
+$background-color: #ffffff;
+$background-image: url("public/background.png");
+$text-color: #f7fcfc;
+$text-dark: #333333;
+$text-light: #f7fcfc;
 $error-color: $red-hulk-secondary;
 $error-text-color: $red-hulk-text;
 

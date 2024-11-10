@@ -1,6 +1,6 @@
-$iron-man-primary: #e7b300; // Żółty
-$iron-man-secondary: #e10000; // Czerwony
-$iron-man-text: #ffffff; // Biały tekst
+$iron-man-primary: #e7b300;
+$iron-man-secondary: #e10000;
+$iron-man-text: #f7fcfc;
 $iron-man: linear-gradient(
   90deg,
   $iron-man-primary,
@@ -11,7 +11,7 @@ $iron-man: linear-gradient(
   $iron-man-primary
 );
 
-// Arc Reactor - pozostawiamy jak jest
+// Arc Reactor
 $arc-reactor: linear-gradient(
   135deg,
   transparent,
@@ -21,31 +21,31 @@ $arc-reactor: linear-gradient(
   transparent
 );
 
-// Red Hulk - Czerwony odcień przypisany do Hulka, bardziej intensywny czerwony
-$red-hulk-primary: #d32f2f; // Intensywny czerwony
-$red-hulk-secondary: #9c1b1b; // Ciemniejszy czerwony
-$red-hulk-text: #f7fcfc; // Biały tekst
+// Red Hulk
+$red-hulk-primary: #d32f2f;
+$red-hulk-secondary: #9c1b1b;
+$red-hulk-text: #f7fcfc;
 $red-hulk-gradient: linear-gradient(
   135deg,
   $red-hulk-primary,
   $red-hulk-secondary
-); // Gradient z czerwonych odcieni
+);
 
-// Thanos - Fioletowy i złoty, aby pasowało do jego motywu
-$thanos-primary: #6a1b9a; // Fioletowy
-$thanos-secondary: #ffb300; // Złoty
-$thanos-text: #333333; // Biały tekst
+// Thanos
+$thanos-primary: #6a1b9a;
+$thanos-secondary: #ffb300;
+$thanos-text: #333333;
 $thanos-gradient: linear-gradient(135deg, $thanos-primary, $thanos-secondary);
 
 $hulk-primary: #4caf50;
 $hulk-secondary: #388e3c;
-$hulk-text: #ffffff;
+$hulk-text: #f7fcfc;
 $hulk-gradient: linear-gradient(135deg, $hulk-primary, $hulk-secondary);
 
 // Spider-Man
 $spiderman-primary: #d50032;
 $spiderman-secondary: #1976d2;
-$spiderman-text: #ffffff;
+$spiderman-text: #f7fcfc;
 $spiderman-gradient: linear-gradient(
   135deg,
   $spiderman-primary,
@@ -65,7 +65,7 @@ $captain-america-gradient: linear-gradient(
 // Black Panther
 $black-panther-primary: #000000;
 $black-panther-secondary: #9c27b0;
-$black-panther-text: #ffffff;
+$black-panther-text: #f7fcfc;
 $black-panther-gradient: linear-gradient(
   135deg,
   $black-panther-primary,

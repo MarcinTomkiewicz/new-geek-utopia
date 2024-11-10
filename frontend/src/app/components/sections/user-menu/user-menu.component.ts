@@ -39,7 +39,7 @@ export class UserMenuComponent {
       next: ({ userMenu, adminMenu, button }) => {
         this.menuItems = userMenu
         this.adminMenuItems = adminMenu;
-        this.button = button['logout'] || {};
+        this.button = button['buttons'] || {};        
       },
       error: (err) => {
         this.errorHandlingService.displayNonCriticalError(err.name, err.message);
